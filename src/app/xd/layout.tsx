@@ -2,6 +2,9 @@
 // import { Inter } from "next/font/google";
 // import "./globals.css";
 
+import React from "react";
+import RootLayout from "../layout";
+
 // const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
@@ -24,27 +27,19 @@
 //   );
 // }
 
-import Header from "@/components/header"
-import "./globals.css"
-
-export const metadata: Metadata = {
-  title: "Sin Ho Ko",
-  description: "Sin Ho Ko",
-}
-
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex h-dvh flex-col items-center justify-center bg-gradient-to-r from-blue-700">
-        <div className="flex max-h-[800px] w-full max-w-screen-xl grow flex-col rounded-lg border-4 border-dashed border-teal-500">
-          <Header />
-          {children}
-        </div>
-      </body>
-    </html>
+    <>
+    <div>
+      layout.tsx test 2 boi
+      {children}
+
+    </div>
+    </>
+
   )
 }
