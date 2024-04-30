@@ -45,7 +45,7 @@ export default function RootLayout({
           {children}
         </div>
       </body> */}
-      <body className="h-dvh overflow-visible bg-gradient-to-tl from-purple-950 to-red-700">
+      <body className="h-dvh overflow-hidden bg-gradient-to-tl from-purple-950 to-red-700">
         {children}
       </body>
     </html>
