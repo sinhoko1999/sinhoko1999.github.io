@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-const plugin = require("tailwindcss/plugin")
+import plugin from "tailwindcss/plugin"
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
@@ -28,10 +28,16 @@ const config: Config = {
     },
   },
   plugins: [
-    plugin(function ({ matchUtilities, theme }) {
+    plugin(function ({
+      matchUtilities,
+      theme,
+    }: {
+      matchUtilities: any
+      theme: any
+    }) {
       matchUtilities(
         {
-          "text-shadow": (value) => ({
+          "text-shadow": (value: string) => ({
             textShadow: value,
           }),
         },

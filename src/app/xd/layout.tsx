@@ -2,8 +2,7 @@
 // import { Inter } from "next/font/google";
 // import "./globals.css";
 
-import React from "react";
-import RootLayout from "../layout";
+import React from "react"
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -30,16 +29,14 @@ import RootLayout from "../layout";
 export default function Layout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <>
-    <div>
-      layout.tsx test 2 boi
-      {children}
-
-    </div>
+      <div>
+        layout.tsx test 2 boi
+        {children}
+      </div>
     </>
-
   )
 }
