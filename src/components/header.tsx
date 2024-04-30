@@ -44,7 +44,7 @@ function RightHeader() {
           height="40"
         />
       </a>
-      <button
+      {/* <button
         onClick={() =>
           console.log(window.matchMedia("(prefers-color-scheme: dark)").matches)
         }
@@ -56,7 +56,7 @@ function RightHeader() {
           width="40"
           height="40"
         />
-      </button>
+      </button> */}
     </div>
   )
 }

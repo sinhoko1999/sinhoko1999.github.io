@@ -39,11 +39,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex h-dvh flex-col items-center justify-center bg-gradient-to-r from-blue-700">
+      {/* <body className="flex h-dvh flex-col items-center justify-center bg-gradient-to-r from-blue-700">
         <div className="flex max-h-[800px] w-full max-w-screen-xl grow flex-col rounded-lg border-4 border-dashed border-teal-500">
           <Header />
           {children}
         </div>
+      </body> */}
+      <body className="h-dvh overflow-visible bg-gradient-to-tl from-purple-950 to-red-700">
+        {children}
       </body>
     </html>
   )
