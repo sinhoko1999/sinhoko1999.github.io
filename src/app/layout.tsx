@@ -26,6 +26,7 @@
 
 import Header from "@/components/header"
 import "./globals.css"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Sin Ho Ko",
@@ -45,7 +46,7 @@ export default function RootLayout({
           {children}
         </div>
       </body> */}
-      <body className="h-dvh overflow-hidden bg-gradient-to-tl from-purple-950 to-red-700">
+      <body className="flex h-dvh overflow-hidden bg-gradient-to-tl from-purple-950 to-red-700">
         {children}
       </body>
     </html>
