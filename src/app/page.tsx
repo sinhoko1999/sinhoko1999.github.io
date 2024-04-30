@@ -51,11 +51,7 @@ function NavBar({
         width={"12"}
         height={"12"}
         className="flex-none"
-        onClick={() => {
-          page1Ref.current
-            ? page1Ref.current.scrollIntoView({ behavior: "smooth" })
-            : null
-        }}
+        onClick={() => page1Ref.current?.scrollIntoView({ behavior: "smooth" })}
       >
         <circle cx="6" cy="6" r={page1NavRadius()} className="fill-white" />
       </svg>
@@ -65,11 +61,7 @@ function NavBar({
         width={"12"}
         height={"12"}
         className="flex-none"
-        onClick={() => {
-          page2Ref.current
-            ? page2Ref.current.scrollIntoView({ behavior: "smooth" })
-            : null
-        }}
+        onClick={() => page2Ref.current?.scrollIntoView({ behavior: "smooth" })}
       >
         <circle cx="6" cy="6" r={page2NavRadius()} fill="white" />
       </svg>
@@ -79,11 +71,7 @@ function NavBar({
         width={"12"}
         height={"12"}
         className="flex-none"
-        onClick={() => {
-          page3Ref.current
-            ? page3Ref.current.scrollIntoView({ behavior: "smooth" })
-            : null
-        }}
+        onClick={() => page3Ref.current?.scrollIntoView({ behavior: "smooth" })}
       >
         <circle cx="6" cy="6" r={page3NavRadius()} fill="white" />
       </svg>
@@ -118,8 +106,8 @@ const Page2 = forwardRef<HTMLDivElement>(function Page2(props, ref) {
       onClick={() => console.log(ref)}
       className="flex h-dvh snap-center items-center justify-center py-[10vh] pr-[10vw]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-r-[16px] border-[#dfdf00] md:gap-6">
-        xd
+      <div className="flex h-full grow flex-col justify-center gap-3 border-r-[16px] border-[#dfdf00] text-3xl md:gap-6 md:gap-6 md:text-6xl md:text-shadow-mdblack">
+        About me
       </div>
     </section>
   )
@@ -134,7 +122,7 @@ const Page3 = forwardRef<HTMLDivElement>(function Page3(props, ref) {
     >
       <div className="flex h-full grow flex-col justify-center gap-3 border-b-[16px] border-r-[16px] border-[#dfdf00] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
         <div>Where to find me:</div>
-        <div>xd</div>
+        <div></div>
       </div>
     </section>
   )
