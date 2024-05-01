@@ -45,6 +45,16 @@ export default function RootLayout({
           {children}
         </div>
       </body> */}
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.png" type="image/png" sizes="32x32" />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-touch-icon.png"
+          type="image/png"
+          sizes="180x180"
+        />
+      </head>
       <body className="h-dvh overflow-hidden bg-gradient-to-tl from-purple-950 to-red-700">
         {children}
       </body>
