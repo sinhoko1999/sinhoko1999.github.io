@@ -1,5 +1,5 @@
 "use client"
-import { forwardRef, useEffect, useRef, useState } from "react"
+import { forwardRef, useEffect, useLayoutEffect, useRef, useState } from "react"
 
 function NavBar({
   page1Ref,
@@ -12,24 +12,28 @@ function NavBar({
   page3Ref: React.RefObject<HTMLDivElement>
   scrollY: number
 }) {
+  const [innderHeight, setInnerHeight] = useState(0)
+
+  useEffect(() => {
+    setInnerHeight(page1Ref.current?.offsetHeight || 0)
+    console.log(page1Ref.current?.offsetHeight)
+  }, [page1Ref, page1Ref.current?.offsetHeight])
+
   function page1NavRadius() {
-    if (scrollY < window.innerHeight / 2) {
+    if (scrollY < innderHeight / 2) {
       return "6"
     }
     return "4"
   }
   function page2NavRadius() {
-    if (
-      window.innerHeight * 1.5 > scrollY &&
-      scrollY >= window.innerHeight / 2
-    ) {
+    if (innderHeight * 1.5 > scrollY && scrollY >= innderHeight / 2) {
       return "6"
     }
     return "4"
   }
 
   function page3NavRadius() {
-    if (scrollY >= window.innerHeight * 1.5) {
+    if (scrollY >= innderHeight * 1.5) {
       return "6"
     }
     return "4"
