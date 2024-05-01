@@ -13,21 +13,15 @@ function NavBar({
   scrollY: number
 }) {
   function page1NavRadius() {
-    if (!page1Ref.current) {
-      return "4"
-    }
-    if (scrollY < page1Ref.current.offsetHeight / 2) {
+    if (scrollY < window.innerHeight / 2) {
       return "6"
     }
     return "4"
   }
   function page2NavRadius() {
-    if (!page2Ref.current) {
-      return "4"
-    }
     if (
-      page2Ref.current.offsetHeight * 1.5 > scrollY &&
-      scrollY >= page2Ref.current.offsetHeight / 2
+      window.innerHeight * 1.5 > scrollY &&
+      scrollY >= window.innerHeight / 2
     ) {
       return "6"
     }
@@ -35,10 +29,7 @@ function NavBar({
   }
 
   function page3NavRadius() {
-    if (!page3Ref.current) {
-      return "4"
-    }
-    if (scrollY >= page3Ref.current.offsetHeight * 1.5) {
+    if (scrollY >= window.innerHeight * 1.5) {
       return "6"
     }
     return "4"
