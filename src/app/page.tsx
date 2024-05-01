@@ -106,7 +106,7 @@ const Page2 = forwardRef<HTMLDivElement>(function Page2(props, ref) {
       onClick={() => console.log(ref)}
       className="flex h-dvh snap-center items-center justify-center py-[10vh] pr-[10vw]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-r-[16px] border-[#dfdf00] text-3xl md:gap-6 md:gap-6 md:text-6xl md:text-shadow-mdblack">
+      <div className="flex h-full grow flex-col justify-center gap-3 border-r-[16px] border-[#dfdf00] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
         About me
       </div>
     </section>
