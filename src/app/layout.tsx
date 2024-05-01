@@ -24,7 +24,6 @@
 //   );
 // }
 
-import Header from "@/components/header"
 import "./globals.css"
 import { Metadata } from "next"
 
