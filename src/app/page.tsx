@@ -40,7 +40,7 @@ function NavBar({
   }
 
   return (
-    <nav className="box-border flex max-w-[10vw] flex-col items-center justify-center gap-10 px-[5vw]">
+    <nav className="absolute right-[calc(5dvw_-_6px)] flex h-dvh flex-col items-center justify-center gap-10">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={"12"}
@@ -79,9 +79,9 @@ const Page1 = forwardRef<HTMLDivElement>(function Page1(props, ref) {
     <section
       {...props}
       ref={ref}
-      className="flex h-dvh snap-center items-center justify-center py-[10vh] pr-[10vw]"
+      className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-r-[16px] border-t-[16px] border-[#dfdf00] md:gap-6">
+      <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-t-[16px] border-[#dfdf00] pl-[5dvw] md:gap-6">
         <div className="animate-[1.5s_linear_0s_fadein1] text-6xl text-shadow-mdblack md:text-9xl md:text-shadow-lgblack">
           WELCOME.
         </div>
@@ -99,9 +99,9 @@ const Page2 = forwardRef<HTMLDivElement>(function Page2(props, ref) {
       {...props}
       ref={ref}
       onClick={() => console.log(ref)}
-      className="flex h-dvh snap-center items-center justify-center py-[10vh] pr-[10vw]"
+      className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-r-[16px] border-[#dfdf00] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
+      <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-[#dfdf00] pl-[5dvw] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
         About me
       </div>
     </section>
@@ -113,9 +113,9 @@ const Page3 = forwardRef<HTMLDivElement>(function Page3(props, ref) {
     <section
       {...props}
       ref={ref}
-      className="flex h-dvh snap-center items-center justify-center py-[10vh] pr-[10vw]"
+      className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-b-[16px] border-r-[16px] border-[#dfdf00] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
+      <div className="flex h-full grow flex-col justify-center gap-3 border-b-[16px] border-l-[16px] border-[#dfdf00] pl-[5dvw] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
         <div>Where to find me:</div>
         <div></div>
       </div>
