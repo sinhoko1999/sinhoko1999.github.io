@@ -157,7 +157,13 @@ const Page3 = forwardRef<HTMLElement>(function Page3(props, page3Ref) {
         >
           Where to find me:
         </div>
-        <div className="flex gap-4 md:gap-8">
+        <div
+          className={
+            textShown
+              ? "flex animate-[fadein2_1s_1.5s_backwards] gap-4 md:gap-8 "
+              : ""
+          }
+        >
           <a href="https://github.com/sinhoko1999" target="_blank">
             <Image
               src="./github.svg"
