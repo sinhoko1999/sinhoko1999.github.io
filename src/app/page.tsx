@@ -1,5 +1,14 @@
 "use client"
-import { forwardRef, useEffect, useLayoutEffect, useRef, useState } from "react"
+import {
+  RefObject,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react"
+import useOnScreen from "../util/useOnScreen"
+import Image from "next/image"
 
 function NavBar({
   page1Ref,
@@ -7,9 +16,9 @@ function NavBar({
   page3Ref,
   scrollY,
 }: {
-  page1Ref: React.RefObject<HTMLDivElement>
-  page2Ref: React.RefObject<HTMLDivElement>
-  page3Ref: React.RefObject<HTMLDivElement>
+  page1Ref: RefObject<HTMLElement>
+  page2Ref: RefObject<HTMLElement>
+  page3Ref: RefObject<HTMLElement>
   scrollY: number
 }) {
   const [innderHeight, setInnerHeight] = useState(0)
@@ -74,18 +83,18 @@ function NavBar({
   )
 }
 
-const Page1 = forwardRef<HTMLDivElement>(function Page1(props, ref) {
+const Page1 = forwardRef<HTMLElement>(function Page1(props, page1Ref) {
   return (
     <section
       {...props}
-      ref={ref}
+      ref={page1Ref}
       className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-t-[16px] border-[#dfdf00] pl-[5dvw] md:gap-6">
-        <div className="animate-[1.5s_linear_0s_fadein1] text-6xl text-shadow-mdblack md:text-9xl md:text-shadow-lgblack">
+      <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-t-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_-20px_60px_-20px_rgb(255_255_0),30px_30px_30px_0px_rgb(0_0_0_/0.25)_inset]   filter md:gap-6">
+        <div className="animate-[fadein1_1s_0.5s_backwards] text-6xl text-shadow-mdblack md:text-[120px] md:text-shadow-lgblack">
           WELCOME.
         </div>
-        <div className="animate-[2.5s_linear_0s_fadein2] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack">
+        <div className="animate-[fadein2_1s_1.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack">
           I&apos;m Sin Ho.
         </div>
       </div>
@@ -93,40 +102,99 @@ const Page1 = forwardRef<HTMLDivElement>(function Page1(props, ref) {
   )
 })
 
-const Page2 = forwardRef<HTMLDivElement>(function Page2(props, ref) {
+const Page2 = forwardRef<HTMLElement>(function Page2(props, page2Ref) {
+  const textRef = useRef(null)
+  const isOnScreen = useOnScreen(textRef)
+  const [textShown, setTextShown] = useState(false)
+  useEffect(() => {
+    isOnScreen ? setTextShown(true) : null
+  }, [isOnScreen])
+
   return (
     <section
       {...props}
-      ref={ref}
-      onClick={() => console.log(ref)}
+      ref={page2Ref}
       className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-[#dfdf00] pl-[5dvw] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
-        About me
+      <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_0px_60px_-20px_rgb(255_255_0),30px_0px_30px_0px_rgb(0_0_0_/0.25)_inset] md:gap-6">
+        <div
+          ref={textRef}
+          className={
+            textShown
+              ? "animate-[fadein2_1s_0.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack"
+              : ""
+          }
+        >
+          About me
+        </div>
       </div>
     </section>
   )
 })
 
-const Page3 = forwardRef<HTMLDivElement>(function Page3(props, ref) {
+const Page3 = forwardRef<HTMLElement>(function Page3(props, page3Ref) {
+  const textRef = useRef(null)
+  const isOnScreen = useOnScreen(textRef)
+  const [textShown, setTextShown] = useState(false)
+  useEffect(() => {
+    isOnScreen ? setTextShown(true) : null
+  }, [isOnScreen])
+
   return (
     <section
       {...props}
-      ref={ref}
+      ref={page3Ref}
       className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
-      <div className="flex h-full grow flex-col justify-center gap-3 border-b-[16px] border-l-[16px] border-[#dfdf00] pl-[5dvw] text-3xl md:gap-6 md:text-6xl md:text-shadow-mdblack">
-        <div>Where to find me:</div>
-        <div></div>
+      <div className="flex h-full grow flex-col justify-center gap-3 border-b-[16px] border-l-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_20px_60px_-20px_rgb(255_255_0),30px_-30px_30px_0px_rgb(0_0_0_/0.25)_inset] md:gap-6">
+        <div
+          ref={textRef}
+          className={
+            textShown
+              ? "animate-[fadein2_1s_0.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack"
+              : ""
+          }
+        >
+          Where to find me:
+        </div>
+        <div className="flex gap-4 md:gap-8">
+          <a href="https://github.com/sinhoko1999" target="_blank">
+            <Image
+              src="./github.svg"
+              width="60"
+              height="60"
+              alt="GitHub"
+              className="drop-shadow-[0px_5px_5px_rgb(0_0_0_/_0.5)]  md:h-[120px] md:w-[120px] md:drop-shadow-[0px_10px_5px_rgb(0_0_0_/_0.3)]"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/sinho-ko" target="_blank">
+            <Image
+              src="/linkedin.png"
+              width="60"
+              height="60"
+              alt="LinkedIn"
+              className="drop-shadow-[0px_5px_5px_rgb(0_0_0_/_0.5)]  md:h-[120px] md:w-[120px] md:drop-shadow-[0px_10px_5px_rgb(0_0_0_/_0.3)]"
+            />
+          </a>
+          <a href="mailto:sinho.ko.1999@gmail.com" target="_blank">
+            <Image
+              src="/mail.svg"
+              width="60"
+              height="60"
+              alt="Mail Icon"
+              className="drop-shadow-[0px_5px_5px_rgb(0_0_0_/_0.5)]  md:h-[120px] md:w-[120px] md:drop-shadow-[0px_10px_5px_rgb(0_0_0_/_0.3)]"
+            />
+          </a>
+        </div>
       </div>
     </section>
   )
 })
 
 export default function Page() {
-  const Page1Ref = useRef<HTMLDivElement>(null)
-  const Page2Ref = useRef<HTMLDivElement>(null)
-  const Page3Ref = useRef<HTMLDivElement>(null)
+  const Page1Ref = useRef<HTMLElement>(null)
+  const Page2Ref = useRef<HTMLElement>(null)
+  const Page3Ref = useRef<HTMLElement>(null)
   const [scrollY, setScrollY] = useState(0)
 
   return (
