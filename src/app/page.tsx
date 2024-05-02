@@ -210,7 +210,7 @@ export default function Page() {
   const Page2Ref = useRef<HTMLElement>(null)
   const Page3Ref = useRef<HTMLElement>(null)
   const [innerHeight, setInnerHeight] = useState(1)
-  const [scrollY, setScrollY] = useState(document.documentElement.scrollTop)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     setInnerHeight(Page1Ref.current?.offsetHeight || 0)
