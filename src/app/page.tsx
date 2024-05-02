@@ -37,7 +37,7 @@ function NavBar({
   }
 
   return (
-    <nav className="absolute right-[calc(5dvw_-_6px)] flex h-dvh flex-col items-center justify-center gap-10">
+    <nav className="absolute right-[calc(2dvw+15px)] flex h-dvh flex-col items-center justify-center gap-10">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={"12"}
@@ -83,7 +83,7 @@ const Page1 = forwardRef<HTMLElement>(function Page1(props, page1Ref) {
     <section
       {...props}
       ref={page1Ref}
-      className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
+      className="flex h-dvh snap-center items-center justify-center py-[10dvh] pl-[10dvw] pr-[calc(4dvw_+_42px)]"
     >
       <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-t-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_-20px_60px_-20px_rgb(255_255_0),30px_30px_30px_0px_rgb(0_0_0_/0.25)_inset]   filter md:gap-6">
         <div
@@ -122,7 +122,7 @@ const Page2 = forwardRef<HTMLElement>(function Page2(props, page2Ref) {
     <section
       {...props}
       ref={page2Ref}
-      className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
+      className="flex h-dvh snap-center items-center justify-center py-[10dvh] pl-[10dvw] pr-[calc(4dvw_+_42px)]"
     >
       <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_0px_60px_-20px_rgb(255_255_0),30px_0px_30px_0px_rgb(0_0_0_/0.25)_inset] md:gap-6">
         <div
@@ -152,7 +152,7 @@ const Page3 = forwardRef<HTMLElement>(function Page3(props, page3Ref) {
     <section
       {...props}
       ref={page3Ref}
-      className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
+      className="flex h-dvh snap-center items-center justify-center py-[10dvh] pl-[10dvw] pr-[calc(4dvw_+_42px)]"
     >
       <div className="flex h-full grow flex-col justify-center gap-3 border-b-[16px] border-l-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_20px_60px_-20px_rgb(255_255_0),30px_-30px_30px_0px_rgb(0_0_0_/0.25)_inset] md:gap-6">
         <div
