@@ -1,12 +1,5 @@
 "use client"
-import {
-  RefObject,
-  forwardRef,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react"
+import { RefObject, forwardRef, useEffect, useRef, useState } from "react"
 import useOnScreen from "../util/useOnScreen"
 import Image from "next/image"
 
@@ -217,11 +210,11 @@ export default function Page() {
   const Page2Ref = useRef<HTMLElement>(null)
   const Page3Ref = useRef<HTMLElement>(null)
   const [innerHeight, setInnerHeight] = useState(1)
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(document.documentElement.scrollTop)
 
   useEffect(() => {
     setInnerHeight(Page1Ref.current?.offsetHeight || 0)
-  }, [Page1Ref, Page1Ref.current?.offsetHeight])
+  }, [Page1Ref.current?.offsetHeight])
 
   return (
     <div
