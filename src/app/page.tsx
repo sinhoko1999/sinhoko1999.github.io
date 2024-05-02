@@ -14,35 +14,30 @@ function NavBar({
   page1Ref,
   page2Ref,
   page3Ref,
+  innerHeight,
   scrollY,
 }: {
   page1Ref: RefObject<HTMLElement>
   page2Ref: RefObject<HTMLElement>
   page3Ref: RefObject<HTMLElement>
+  innerHeight: number
   scrollY: number
 }) {
-  const [innderHeight, setInnerHeight] = useState(0)
-
-  useEffect(() => {
-    setInnerHeight(page1Ref.current?.offsetHeight || 0)
-    console.log(page1Ref.current?.offsetHeight)
-  }, [page1Ref, page1Ref.current?.offsetHeight])
-
   function page1NavRadius() {
-    if (scrollY < innderHeight / 2) {
+    if (scrollY < innerHeight / 2) {
       return "6"
     }
     return "4"
   }
   function page2NavRadius() {
-    if (innderHeight * 1.5 > scrollY && scrollY >= innderHeight / 2) {
+    if (innerHeight * 1.5 > scrollY && scrollY >= innerHeight / 2) {
       return "6"
     }
     return "4"
   }
 
   function page3NavRadius() {
-    if (scrollY >= innderHeight * 1.5) {
+    if (scrollY >= innerHeight * 1.5) {
       return "6"
     }
     return "4"
@@ -84,6 +79,13 @@ function NavBar({
 }
 
 const Page1 = forwardRef<HTMLElement>(function Page1(props, page1Ref) {
+  const textRef = useRef(null)
+  const isOnScreen = useOnScreen(textRef)
+  const [textShown, setTextShown] = useState(false)
+  useEffect(() => {
+    isOnScreen ? setTextShown(true) : null
+  }, [isOnScreen])
+
   return (
     <section
       {...props}
@@ -91,10 +93,23 @@ const Page1 = forwardRef<HTMLElement>(function Page1(props, page1Ref) {
       className="flex h-dvh snap-center items-center justify-center px-[10dvw] py-[10dvh]"
     >
       <div className="flex h-full grow flex-col justify-center gap-3 border-l-[16px] border-t-[16px] border-[#dfdf00] pl-[5dvw] shadow-[-20px_-20px_60px_-20px_rgb(255_255_0),30px_30px_30px_0px_rgb(0_0_0_/0.25)_inset]   filter md:gap-6">
-        <div className="animate-[fadein1_1s_0.5s_backwards] text-6xl text-shadow-mdblack md:text-[120px] md:text-shadow-lgblack">
+        <div
+          ref={textRef}
+          className={
+            textShown
+              ? "animate-[fadein1_1s_0.5s_backwards] text-6xl text-shadow-mdblack md:text-[120px] md:text-shadow-lgblack"
+              : "opacity-0"
+          }
+        >
           WELCOME.
         </div>
-        <div className="animate-[fadein2_1s_1.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack">
+        <div
+          className={
+            textShown
+              ? "animate-[fadein2_1s_1.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack"
+              : "opacity-0"
+          }
+        >
           I&apos;m Sin Ho.
         </div>
       </div>
@@ -122,7 +137,7 @@ const Page2 = forwardRef<HTMLElement>(function Page2(props, page2Ref) {
           className={
             textShown
               ? "animate-[fadein2_1s_0.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack"
-              : ""
+              : "opacity-0"
           }
         >
           About me
@@ -152,7 +167,7 @@ const Page3 = forwardRef<HTMLElement>(function Page3(props, page3Ref) {
           className={
             textShown
               ? "animate-[fadein2_1s_0.5s_backwards] text-3xl text-shadow-smblack md:text-6xl md:text-shadow-mdblack"
-              : ""
+              : "opacity-0"
           }
         >
           Where to find me:
@@ -161,7 +176,7 @@ const Page3 = forwardRef<HTMLElement>(function Page3(props, page3Ref) {
           className={
             textShown
               ? "flex animate-[fadein2_1s_1.5s_backwards] gap-4 md:gap-8 "
-              : ""
+              : "opacity-0"
           }
         >
           <a href="https://github.com/sinhoko1999" target="_blank">
@@ -201,14 +216,25 @@ export default function Page() {
   const Page1Ref = useRef<HTMLElement>(null)
   const Page2Ref = useRef<HTMLElement>(null)
   const Page3Ref = useRef<HTMLElement>(null)
+  const [innerHeight, setInnerHeight] = useState(1)
   const [scrollY, setScrollY] = useState(0)
 
+  useEffect(() => {
+    setInnerHeight(Page1Ref.current?.offsetHeight || 0)
+  }, [Page1Ref, Page1Ref.current?.offsetHeight])
+
   return (
-    <>
+    <div
+      className="h-dvh overflow-hidden"
+      style={{
+        background: `linear-gradient(${0.875 - scrollY / 8 / innerHeight}turn, rgb(59 7 100), rgb(185 28 28))`,
+      }}
+    >
       <NavBar
         page1Ref={Page1Ref}
         page2Ref={Page2Ref}
         page3Ref={Page3Ref}
+        innerHeight={innerHeight}
         scrollY={scrollY}
       />
       <main
@@ -219,6 +245,6 @@ export default function Page() {
         <Page2 ref={Page2Ref} />
         <Page3 ref={Page3Ref} />
       </main>
-    </>
+    </div>
   )
 }

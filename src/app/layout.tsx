@@ -24,6 +24,7 @@
 //   );
 // }
 
+import { useState } from "react"
 import "./globals.css"
 import { Metadata } from "next"
 
@@ -55,9 +56,7 @@ export default function RootLayout({
           sizes="180x180"
         />
       </head>
-      <body className="h-dvh overflow-hidden bg-gradient-to-tl from-purple-950 to-red-700">
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
